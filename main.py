@@ -80,6 +80,7 @@ def handle_enemy_encounter():
 def print_ending_dialogue():
     Dialogues.dialogue_6()
     time.sleep(5)
+
     Dialogues.dialogue_7()
     time.sleep(5)
     print("Congratulations! You reached the exit!")
@@ -151,8 +152,23 @@ def main():
                 print_ending_dialogue()
                 return  # Exit the game when the player reaches the exit
             
+            if current_position == (maze_size - 2, maze_size - 1):
+                Dialogues.dialogue_6()
+                time.sleep(5)
+                Dialogues.checkpoint_reached()
+                handle_enemy_encounter()
+                return  # Exit the game when the player reaches the exit
+            
             if current_position == (maze_size - 6, maze_size - 7):
                 Dialogues.dialogue_1()
+                time.sleep(5)
+                Dialogues.dialogue_2()
+                time.sleep(5)
+                Dialogues.dialogue_3()
+                time.sleep(5)
+                Dialogues.dialogue_4()
+                time.sleep(5)
+                Dialogues.dialogue_5()
                 time.sleep(5)
                 continue
 

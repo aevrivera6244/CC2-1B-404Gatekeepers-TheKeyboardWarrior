@@ -1,8 +1,10 @@
 import random
 import time
+import os
+import sys
 from enemy import A, B, C
 from maze_generator import MazeGenerator, print_maze, move_player
-from dialogues import Dialogues
+from dialogues import Dialogues, get_player_name
 
 player_stats = {'health': 100, 'attack': 10, 'defense': 5}
 
@@ -66,7 +68,8 @@ def handle_enemy_encounter():
     if player_stats['health'] <= 0:
         print("You were defeated. Game over.")
         play_again = input("Do you want to play again? (yes/no): ").lower()
-        return play_again == "yes"
+        if play_again == "yes":
+            os.execl(sys.executable, os.path.abspath(__file__), *sys.argv)
 
     # Check if the enemy's health reached 0
     if not enemy_type.is_alive():
@@ -78,7 +81,6 @@ def print_ending_dialogue():
     print("Congratulations! You reached the exit!")
     print("Thank you for playing. Exiting the game...")
 
-
 def main():
     maze_size = 9
 
@@ -88,15 +90,12 @@ def main():
 
     if choice == "1":
         print("Starting the game...")
+        time.sleep(2)
+        player_name = get_player_name()
         time.sleep(1)
-        player_name = input("Enter your name: ")
-        time.sleep(1)
-        print(f"""\nWith your passion for the legend of the keyboard, you venture to the desert to acquire the lost remaining symbol relics that will complete the keyboard. The symbols !,$,&,* and ~.
-
-Your companion, Jebrael, helped you to get to the location because only you {player_name} were the last person in your bloodline who has the capabilities to take hold of them and place them to the right location.
-
-On the last leg, you finally acquire the “~” symbol. However the whole place started shaking.
-""")
+        print(f"\nHello, {player_name}! Let's start the game.")
+        time.sleep(3)
+        Dialogues.dialogue_0()
         time.sleep(5)
     elif choice == "2":
         Dialogues.credits()
@@ -146,27 +145,6 @@ On the last leg, you finally acquire the “~” symbol. However the whole place
             if current_position == (maze_size - 1, maze_size - 1):
                 print_ending_dialogue()
                 return  # Exit the game when the player reaches the exit
-
-def dialogue_7():
-        print("""\nYou defeated the enemy, however, on the corner of your eyes, you see Jebreal, stiff, cold…and lifeless
-
-You can’t help but cry, despite knowing you’ve only known each other for a short moment
-
-You notice that he was gripping something on his bloody hand…it seemed like…a photograph?
-Slowly and gently, you take it from his hands and unfold it to reveal an image
-
-An image of a family with smiles on their faces. A familiar woman and an oh-so-familiar child playing with the keyboard relics.
-
-Confused, you try to see if there are any other images attached, but to no avail, that was the only one.
-
-You catch a glimpse of the back and notice a somehow long message written, surprisingly, addressed to you
-              
-{player_name},
-
-I know I’ve had my share of not being there for the both of you. But I know that there is a reason why the dessert always calls me to explore. This is selfish, I know, but son. I pass down this blessing to you, in hopes that one day we get to venture the world together, discovering the world and its true beauty. I hope you can one day forgive me for leaving you and your mother. I had promised our ancestors that I would help keep and guide the relics of the keyboard. And you will one day have to reclaim them. I hope that one day you will understand everything that I did for you and your mom. I love you always.
-
-Dad
-""")
 
 if __name__ == "__main__":
     main()

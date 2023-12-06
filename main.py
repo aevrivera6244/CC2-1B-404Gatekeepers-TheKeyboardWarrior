@@ -147,10 +147,6 @@ On the last leg, you finally acquire the “~” symbol. However the whole place
                 print_ending_dialogue()
                 return  # Exit the game when the player reaches the exit
 
-
-if __name__ == "__main__":
-    main()
-
 def dialogue_7():
         print("""\nYou defeated the enemy, however, on the corner of your eyes, you see Jebreal, stiff, cold…and lifeless
 
@@ -171,3 +167,6 @@ I know I’ve had my share of not being there for the both of you. But I know th
 
 Dad
 """)
+
+if __name__ == "__main__":
+    main()

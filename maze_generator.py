@@ -9,13 +9,16 @@ class MazeGenerator:
         self.start_position = None
         self.checkpoint_positions = []
 
+    def get_checkpoint_positions(self):
+        return self.checkpoint_positions
+
     def generate_maze(self):
         maps = [
             [
                 [0, 0, 1, 1, 1, 1, 1, 1, 1],
                 [1, 0, 0, 0, 1, 0, 1, 0, 1],
                 [1, 1, 0, 0, 1, 1, 1, 1, 1],
-                [1, 0, 3, 0, 0, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 1],
                 [1, 0, 0, 1, 0, 1, 0, 0, 1],
                 [1, 1, 1, 1, 1, 0, 0, 1, 1],
                 [1, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -26,7 +29,7 @@ class MazeGenerator:
                 [0, 0, 1, 1, 1, 1, 1, 1, 1],
                 [0, 0, 1, 1, 1, 1, 1, 1, 1],
                 [1, 0, 0, 0, 0, 0, 0, 0, 1],
-                [1, 1, 3, 1, 0, 1, 0, 1, 1],
+                [1, 1, 0, 1, 0, 1, 0, 1, 1],
                 [1, 0, 0, 0, 0, 0, 0, 0, 1],
                 [1, 0, 1, 1, 0, 1, 1, 1, 1],
                 [1, 0, 1, 0, 0, 1, 1, 0, 1],
@@ -37,7 +40,7 @@ class MazeGenerator:
 
         self.maze = random.choice(maps)
         self.start_position = (1, 1)  # Set the start position
-        self.checkpoint_positions = [(3, 3), (6, 6)]  # Set checkpoint positions
+        self.checkpoint_positions = [(y, x) for y, row in enumerate(self.maze) for x, cell in enumerate(row) if cell == 'x']
 
     def get_maze(self):
         return self.maze
@@ -48,6 +51,16 @@ class MazeGenerator:
     def get_checkpoint_positions(self):
         return self.checkpoint_positions
 
+    def place_checkpoints(self, num_checkpoints):
+        for _ in range(num_checkpoints):
+            while True:
+                x = random.randint(0, self.width - 1)
+                y = random.randint(0, self.height - 1)
+
+                # Make sure the checkpoint is not placed on a wall or the start/end position
+                if self.maze[y][x] == 0 and (x, y) not in {self.start_position, self.end_position}:
+                    self.maze[y][x] = 3  # Use 3 to represent a checkpoint
+                    break
 
 def print_maze(player_pos, maze):
     for row in range(len(maze)):
@@ -103,9 +116,10 @@ def main():
                 print("Invalid move! Use W/A/S/D.")
                 continue
 
-            if current_position == (maze_size - 1, maze_size - 1):
+            if current_position == (maze_size - 2, maze_size - 2):
                 print("Congratulations! You reached the exit!")
                 break
+
 
 
 if __name__ == "__main__":

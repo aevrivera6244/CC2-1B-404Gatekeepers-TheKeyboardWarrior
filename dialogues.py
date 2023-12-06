@@ -63,8 +63,4 @@ class Dialogues:
 
     @staticmethod
     def credits():
-          print("""Game created by 404 Gatekeepers:
-        Jron Corpuz
-        Yasmien Gayao
-        Gerryle Martinez
-        Adrian Rivera""")
+        print("Game created by 404 Gatekeepers")

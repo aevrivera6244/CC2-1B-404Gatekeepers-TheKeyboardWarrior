@@ -78,6 +78,10 @@ def handle_enemy_encounter():
     return True
 
 def print_ending_dialogue():
+    Dialogues.dialogue_6()
+    time.sleep(5)
+    Dialogues.dialogue_7()
+    time.sleep(5)
     print("Congratulations! You reached the exit!")
     print("Thank you for playing. Exiting the game...")
 
@@ -126,8 +130,9 @@ def main():
                 current_position = move_player(current_position, move, maze_generator.get_maze())
 
                 # Check if the player reached a checkpoint
-                if current_position in checkpoint_positions:
+                if current_position in maze_generator.get_checkpoint_positions():
                     Dialogues.checkpoint_reached()
+                    maze_generator.get_maze()[current_position[0]][current_position[1]] = ' '  # Remove the checkpoint
 
                 # Check for a random enemy encounter
                 if random.random() < 0.4:
@@ -145,6 +150,10 @@ def main():
             if current_position == (maze_size - 1, maze_size - 1):
                 print_ending_dialogue()
                 return  # Exit the game when the player reaches the exit
+            
+            if current_position == (maze_size - 6, maze_size - 7):
+                print("Congratulations! You reached the exit!")
+                break
 
 if __name__ == "__main__":
     main()

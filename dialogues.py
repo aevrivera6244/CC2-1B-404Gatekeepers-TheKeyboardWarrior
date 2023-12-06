@@ -1,6 +1,7 @@
 player_name = ""
 
 def get_player_name():
+        global player_name
         player_name = input("Enter your name: ")
         return player_name
 
@@ -84,7 +85,7 @@ On the last leg, you finally acquire the “~” symbol. However the whole place
     @staticmethod
     def dialogue_1():
         global player_name
-        print(f"""\nJebrael: Welcome back, <player name> you passed out after collecting the relics of the keyboard symbols !,$,&,*,~. Get up, we need to get out of this place
+        print(f"""\nJebrael: Welcome back, {player_name} you passed out after collecting the relics of the keyboard symbols !,$,&,*,~. Get up, we need to get out of this place
 	{player_name}: W-What happened?
 	Jebrael: Oh no, perhaps this is the effect of acquiring all the symbol relics. You have to get it together! Tell me what you remember.
 	{player_name}: We went to the desert to finish acquiring the letters of the keyboard.
@@ -148,7 +149,8 @@ However, with no hesitation you run forward and attacked the enemy
 Little by little. The relics on your possession start lighting on different colors and you feel its power being absorbed in your body
 """)
     
-def dialogue_7():
+    @staticmethod
+    def dialogue_7():
         global player_name
         print(f"""\nYou defeated the enemy, however, on the corner of your eyes, you see Jebreal, stiff, cold…and lifeless
 

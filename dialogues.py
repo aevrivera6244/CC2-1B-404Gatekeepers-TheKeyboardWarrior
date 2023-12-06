@@ -75,7 +75,7 @@ class Dialogues:
     @staticmethod
     def dialogue_0():
         global player_name
-        print(f"""\nnWith your passion for the legend of the keyboard, you venture to the desert to acquire the lost remaining symbol relics that will complete the keyboard. The symbols !,$,&,* and ~.
+        print(f"""\nWith your passion for the legend of the keyboard, you venture to the desert to acquire the lost remaining symbol relics that will complete the keyboard. The symbols !,$,&,* and ~.
 
 Your companion, Jebrael, helped you to get to the location because only you {player_name} were the last person in your bloodline who has the capabilities to take hold of them and place them to the right location.
 

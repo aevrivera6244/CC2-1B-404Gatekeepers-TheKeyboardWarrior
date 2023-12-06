@@ -18,7 +18,9 @@ def run_away():
 
 
 def print_enemy_stats(enemy):
-    print(f"Enemy Stats - Health: {enemy.health}, Attack: {enemy.attack}, Defense: {enemy.defense}")
+    if enemy.health > 0:
+        print(f"Enemy Stats - Health: {enemy.health}, Attack: {enemy.attack}, Defense: {enemy.defense}")
+
 
 
 def handle_enemy_encounter():
@@ -49,7 +51,10 @@ def handle_enemy_encounter():
             if run_away():
                 break
         else:
-            print("Invalid choice. Try again.")
+            print("Invalid choice. You hesitated and the enemy took advantage!")
+            enemy_attack = max(0, enemy_type.attack + random.randint(-2, 2))
+            player_stats['health'] -= max(0, enemy_attack - player_stats['defense'])
+            print(f"{enemy_type.name} attacked and dealt {enemy_attack} damage!")
 
         print_enemy_stats(enemy_type)  # Display enemy stats after the player's move
 
@@ -63,8 +68,11 @@ def handle_enemy_encounter():
         play_again = input("Do you want to play again? (yes/no): ").lower()
         return play_again == "yes"
 
-    return True
+    # Check if the enemy's health reached 0
+    if not enemy_type.is_alive():
+        print(f"You defeated {enemy_type.name}! The enemy is dead.")
 
+    return True
 
 def print_ending_dialogue():
     print("Congratulations! You reached the exit!")
@@ -80,12 +88,6 @@ def main():
 
     if choice == "1":
         print("Starting the game...")
-        print(f"\nHello, Let's start the game.")
-    print(f"""With your passion for the legend of the keyboard, you venture to the desert to acquire the lost remaining symbol relics that will complete the keyboard. The symbols !,$,&,* and ~.
-
-Your companion, Jebrael, helped you to get to the location because only you, were the last person in your bloodline who has the capabilities to take hold of them and place them to the right location.
-
-On the last leg, you finally acquire the “~” symbol. However the whole place started shaking.""")
     elif choice == "2":
         Dialogues.credits()
         return

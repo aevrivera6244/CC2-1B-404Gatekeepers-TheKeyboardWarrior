@@ -152,8 +152,9 @@ def main():
                 return  # Exit the game when the player reaches the exit
             
             if current_position == (maze_size - 6, maze_size - 7):
-                print("Congratulations! You reached the exit!")
-                break
+                Dialogues.dialogue_1()
+                time.sleep(5)
+                continue
 
 if __name__ == "__main__":
     main()

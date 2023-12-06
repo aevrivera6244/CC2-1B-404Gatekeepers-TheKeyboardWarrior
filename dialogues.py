@@ -38,7 +38,7 @@ class Dialogues:
 
     @staticmethod
     def checkpoint_reached():
-        print("You've met a old friend")
+        print("You've met an old friend")
         print("""
 ⢀⡴⠑⡄⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
 ⠸⡇⠀⠿⡀⠀⠀⠀⣀⡴⢿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
@@ -63,9 +63,68 @@ class Dialogues:
 
     @staticmethod
     def credits():
-               print("""Game created by 404 Gatekeepers: 
-Corpuz, Jron Ivan
-Gayao, Yasmien
-Martinez, Gerryle
-Rivera, Adrian Erwin""")
+        print("Game created by 404 Gatekeepers")
+    
+    @staticmethod
+    def dialogue_1():
+        print("""\nJebrael: Welcome back, <player name> you passed out after collecting the relics of the keyboard symbols !,$,&,*,~. Get up, we need to get out of this place
+	2: W-What happened?
+	Jebrael: Oh no, perhaps this is the effect of acquiring all the symbol relics. You have to get it together! Tell me what you remember.
+	2: We went to the desert to finish acquiring the letters of the keyboard.
+	Jebrael: Skip to the part where we went in the underground, will ya!
+	2: I don’t know! We got the 4th symbol and I don't remember how we got here! Stop shouting at me!
+	Jebrael: Well we have to hurry up or we’re gonna get buried. We have the symbol relics, now we just have to defeat all enemies on our way out, come on lad!
+""")
+    
+    @staticmethod
+    def dialogue_2():
+        print("""\nFrom the distance you hear someone whisper your name, telling you which way is the right way out.
+
+	2: Here? No… Here! Let’s go here!
+	Jebrael: Are you sure lad? You just woke up from passing out. Are you sure you’re not imagining things?
+	2: No Just trust me. Trust me on this
+""")
+    
+    @staticmethod
+    def dialogue_3():
+        print("""\nYou start feeling lightheaded, feeling the absorption of energy that helped you gain strength.
+
+You watch as an enemy approaches and you lunge to a forceful attack
+
+""")
+        
+    @staticmethod
+    def dialogue_4():
+        print("""\nYou start feeling lightheaded, feeling the absorption of energy that helped you gain strength.
+
+You watch as an enemy approaches and you lunge to a forceful attack
+
+2: The symbol strike, keyboard smash! AAAAAHHHHHHH
+""")
+        
+    @staticmethod
+    def dialogue_5():
+        print("""\nYou defeated the enemy and a bright green light appears before you, floating like a fog. 
+
+You seem to notice its behavior and that it’s trying to show you the way
+
+You and Jabreal follow through...
+""")
+        
+    @staticmethod
+    def dialogue_6():
+        print("""\nYou’re near the exit and saw the light outside of the door
+
+As you run with the relics, you hear Jebreal let out a painful scream.
+
+You turn around only to see him be devoured by the location’s guardian, slowly chewing him limb by limb.
+
+Suddenly, your memories with Jebrael on the whole adventure flashes before your eyes. 
+
+You hear him say “Run for your life (player)! Go without me!”
+
+However, with no hesitation you run forward and attacked the enemy
+
+Little by little. The relics on your possession start lighting on different colors and you feel its power being absorbed in your body
+""")
         
